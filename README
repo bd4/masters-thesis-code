@@ -3,7 +3,9 @@ OVERVIEW
 This code was developed for the masters thesis
 "Implementing several attacks on plain ElGamal encryption" by Bryce Allen
 at Iowa State University, 2008. For more detailed information refer to the
-thesis.
+thesis:
+
+http://bda.ath.cx/isu-thesis/ImplementingElGamalAttacks.pdf
 
 QUICKSTART
 
