@@ -1,0 +1,9 @@
+All source code and data files are copyright 2008 by Bryce Allen
+and distributed under the term so of the MIT license (see LICENSE.MIT).
+
+The code is designed to link against GMP and Tokyo Cabinet.
+GMP is Copyright 1991, 1996, 1999, 2000, 2007 Free Software Foundation, Inc.
+and licensed under the LGPLv3 (see LICENSE.LGPL3).
+
+Tokyo Cabinet is Copyright (C) 2006-2008 Mikio Hirabayashi and licensed under
+the LGPLv2 (see LICENSE.LGPL2).

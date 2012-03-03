@@ -1,0 +1,39 @@
+lib tokyocabinet ;
+lib gmp : : <file>/usr/lib/libgmp.a ;
+
+lib randcommon : lib/randomhelpers.cc lib/CFactoredInteger.cc gmp : <link>static ;
+lib elgamal : lib/elgamal.cc lib/ElgamalCryptosystem.cc randcommon gmp : <link>static ;
+lib dlog    : lib/dlog.cc randcommon gmp : <link>static ;
+
+exe mimattack : mimattackmain.cc MpzList.cc [ glob *Attack*.cc ] elgamal dlog tokyocabinet ;
+
+exe randomfac : randomfac.cc lib/randomhelpers.cc lib/CFactoredInteger.cc gmp ;
+
+exe elgamalmgr : elgamalmgr.cc elgamal ;
+
+exe elgamaltest : elgamaltest.cc elgamal ;
+run elgamaltest.cc elgamal : -c10 -p512 -b128 -t : : : elgamaltest-runtmp ;
+
+make tags : [ glob *.cc ] [ glob *.h ] [ glob lib/*.cc ] [ glob include/*.h ] : @ctags ;
+actions ctags
+{
+    ctags $(>)
+    cp tags $(<)
+}
+
+exe dlogtest : dlogtest.cc dlog ;
+run dlogtest.cc dlog : -l -c10 -p128 -n20 -t : : : dlogtest-runtmp ;
+
+exe mpz_size_test : mpzSizeTest.cc gmp ;
+
+exe modExp : modularExponentiation.cc elgamal ;
+
+exe modExpMulInv : modularExponentiationWithMulInv.cc elgamal ;
+
+exe modExpStore : modularExponentiationStore.cc elgamal ;
+
+exe splitProb : splittingProbabilities.cc randcommon ;
+
+exe factorTest : factorTest.cc randcommon ;
+
+exe elgamaltime : elgamaltime.cc elgamal ;
