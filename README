@@ -9,8 +9,8 @@ http://bda.ath.cx/isu-thesis/ImplementingElGamalAttacks.pdf
 
 QUICKSTART
 
-Unpack the source and build with 'bjam release'. Copy the executables to a location
-in your PATH, or add the build directory to your PATH.
+Unpack the source and build with 'bjam release'. Copy the executables to a
+location in your PATH, or add the build directory to your PATH.
 
 To attack a single ciphertext:
 
@@ -30,9 +30,10 @@ $ ./attack.pl --n all --c s72 --b 34
 
 REQUIREMENTS
 
-The code was designed to run on a 64-bit GNU/Linux system. In particular, the getopt
-functions from unistd.h are used, and /dev/urandom is read to seed the random
-number generator. The programs should also compile and run on a 32-bit system.
+The code was designed to run on a 64-bit GNU/Linux system. In particular, the
+getopt functions from unistd.h are used, and /dev/urandom is read to seed the
+random number generator. The programs should also compile and run on a 32-bit
+system.
 
 Build system:
 Boost.Build V2 m12
@@ -42,45 +43,57 @@ glibc 2.7 (earlier versions should also work)
 GMP 4.2.x
 Tokyo Cabinet 1.3.x
 
+In Ubuntu and other Debian based distributions, installing the following
+packages should install the necessary dependencies.
+
+ $ apt-get install libboost-dev libgmp-dev libtokyocabinet-dev
+
+There used to be a bjam package and a boost-build package, but bjam is now part
+of libboost-dev.
+
 PROGRAMS
 
-mimattack (source mimattackmain.cc) is the main program used to run the attacks.
-The *Attack classes implement the different attacks and attack variations.
+mimattack (source mimattackmain.cc) is the main program used to run the
+attacks.  The *Attack classes implement the different attacks and attack
+variations.
 
-elgamalmgr is used to create cryptosystems and ciphertexts which will be vulnerable
-to the attack.
+elgamalmgr is used to create cryptosystems and ciphertexts which will be
+vulnerable to the attack.
 
-elgamaltime, elgamaltest, factortest, randomfac, and dlogtest are designed to test
-various components.
+elgamaltime, elgamaltest, factortest, randomfac, and dlogtest are designed to
+test various components.
 
-splitProb determines splitting probabilities experimentally; a faster version with
-better factoring algorithms is distributed separately under the GPL license. This
-was done to simplify licensing.
+splitProb determines splitting probabilities experimentally; a faster version
+with better factoring algorithms is distributed separately under the GPL
+license. This was done to simplify licensing.
 
-modExp computes the modular exponentations required by an attack without storing the
-results. Attack variations which do not take significantly longer than modExp should
-be considered optimal.
+modExp computes the modular exponentations required by an attack without
+storing the results. Attack variations which do not take significantly longer
+than modExp should be considered optimal.
 
-createMessages.pl creates messages of different sizes for a given cryptosystem using
-elgamalmgr, and attack.pl runs mimattack on those messages, collects results, and stores
-them to datafiles. Cryptosystems should be named with the .elg extension; the Perl scripts
-store messages and results to a directory with the same name with the extension stripped.
-These scripts also assume that mimattack and elgamalmgr are in PATH.
+createMessages.pl creates messages of different sizes for a given cryptosystem
+using elgamalmgr, and attack.pl runs mimattack on those messages, collects
+results, and stores them to datafiles. Cryptosystems should be named with the
+.elg extension; the Perl scripts store messages and results to a directory with
+the same name with the extension stripped.  These scripts also assume that
+mimattack and elgamalmgr are in PATH.
 
 LIBRARIES
 
 lib/ElgamalCryptosystem.cc implements "plain" ElGamal encryption. This should
-never be used as the model for an actual implementation. Note that these attacks do not
-show that ElGamal is broken; they show that a certain way of implementing ElGamal is broken.
+never be used as the model for an actual implementation. Note that these
+attacks do not show that ElGamal is broken; they show that a certain way of
+implementing ElGamal is broken.
 
-lib also contains a class for storing and creating integers with their prime factorization,
-and a discrete log implementation using the Pohlig-Hellman and Pollard Rho algorithms.
+lib also contains a class for storing and creating integers with their prime
+factorization, and a discrete log implementation using the Pohlig-Hellman and
+Pollard Rho algorithms.
 
 RESULTS
 
 See the cryptosystems directory for the actual results used in the thesis.
+Note: not yet included in the git repository, will be added shortly.
 
 COPYING / LICENSE
 
 See the LICENSE file for copyright and licensing information.
-
