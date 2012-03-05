@@ -7,6 +7,8 @@ use strict;
 use Pod::Usage;
 use Getopt::Long;
 use Data::Dumper qw(Dumper);
+use File::Spec::Functions qw(rel2abs);
+use File::Basename;
 
 # Memory should be less than 2**$MEMORY_BITS bytes
 # I have 6 GB, so 32 bits => 4GB is max, since 33bits => 8GB
@@ -28,7 +30,9 @@ my $HASHBITS = 32;
 my $MINBITS = 32; my $MAXBITS = 64;
 my $BITINC = 2;
 
-my $CSDIR = 'cryptosystems';
+# TODO: use separate directory outside of source control for tables and other
+# computed ata.
+my $CSDIR = dirname(rel2abs($0)) . '/cryptosystems/';
 
 $main::VERSION = '0.1';
 

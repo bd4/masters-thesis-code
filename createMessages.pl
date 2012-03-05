@@ -5,8 +5,10 @@
 use strict;
 use Pod::Usage;
 use Getopt::Long;
+use File::Spec::Functions qw(rel2abs);
+use File::Basename;
 
-my $CSDIR = '/aaks/research/cs/';
+my $CSDIR = dirname(rel2abs($0)) . '/cryptosystems/';
 
 $main::VERSION = '0.1';
 
