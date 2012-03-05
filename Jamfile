@@ -1,5 +1,5 @@
 lib tokyocabinet ;
-lib gmp : : <file>/usr/lib/libgmp.a ;
+lib gmp : : <file>/usr/lib/x86_64-linux-gnu/libgmp.a ;
 
 lib randcommon : lib/randomhelpers.cc lib/CFactoredInteger.cc gmp : <link>static ;
 lib elgamal : lib/elgamal.cc lib/ElgamalCryptosystem.cc randcommon gmp : <link>static ;
