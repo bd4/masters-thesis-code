@@ -89,10 +89,10 @@ lib also contains a class for storing and creating integers with their prime
 factorization, and a discrete log implementation using the Pohlig-Hellman and
 Pollard Rho algorithms.
 
-RESULTS
+CRYPTOSYSTEMS
 
-See the cryptosystems directory for the actual results used in the thesis.
-Note: not yet included in the git repository, will be added shortly.
+See the cryptosystems directory for the input cryptosystems and messages used
+in the thesis.
 
 COPYING / LICENSE
 
